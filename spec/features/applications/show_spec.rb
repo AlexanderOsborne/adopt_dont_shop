@@ -66,5 +66,20 @@ require 'rails_helper'
       expect(page).to have_no_button("Submit")
       expect(page).to have_no_content("Pending")
     end
+
+    it 'I can search for a pet and add it to the page'  do
+      joe = Application.create!(name: 'Joe', street_address: "12 Broadway", city: "Boulder", state: "CO", zip: 80303)
+      shelter = create(:shelter)
+      puppy = create(:pet, shelter: shelter)
+      kitteh = create(:pet, shelter: shelter)
+      pet_app = PetApplication.create!(application: joe, pet: puppy, pet:kitteh)
+
+      visit "/applications/#{joe.id}"
+      fill_in "Add a Pet to this Application", with:"#{puppy.name.downcase}"
+      click_on "Search"
+      click_link "Adopt this Pet"
+
+      expect(page).to have_content(puppy.name)
+    end
   end
 end
