@@ -65,8 +65,6 @@ require 'rails_helper'
       expect(page).to have_content("In Progress")
       expect(page).to have_no_button("Submit")
       expect(page).to have_no_content("Pending")
-    
     end
-
   end
 end

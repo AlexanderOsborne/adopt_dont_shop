@@ -4,7 +4,7 @@
   <%= text_field_tag :search, params[:search] %><br>
   <%= submit_tag 'Search' %><br>
   
-  <% if @selected  && @application.status == "In Progress"%>
+  <% if @selected  %>
     <% @selected.each do |selected| %>
     <%=  selected.name %> <%= link_to 'Adopt this Pet', applications_show_path(@application.id, :pet_id => selected.id, :adopt => true), method: :get %> <br>
   <% end %>
