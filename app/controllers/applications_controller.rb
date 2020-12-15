@@ -27,8 +27,8 @@ class ApplicationsController < ApplicationController
     if application.save
       redirect_to applications_show_path(application.id)
     else
-      redirect_to applications_new_path
       flash[:notice] = "Application not created: Required information missing."
+      render :new
     end
   end
 
