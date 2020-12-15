@@ -31,9 +31,42 @@ require 'rails_helper'
       visit "/applications/#{joe.id}"
       fill_in "Add a Pet to this Application", with:"#{puppy.name}"
       click_on "Search"
-      # require 'pry'; binding.pry
       click_link "Adopt this Pet"
 
+      expect(page).to have_content(puppy.name)
     end
+
+    it 'When I have a pet, I can submit my application'  do
+      joe = Application.create!(name: 'Joe', street_address: "12 Broadway", city: "Boulder", state: "CO", zip: 80303)
+      shelter = create(:shelter)
+      puppy = create(:pet, shelter: shelter)
+      kitteh = create(:pet, shelter: shelter)
+      pet_app = PetApplication.create!(application: joe, pet: puppy, pet:kitteh)
+
+      visit "/applications/#{joe.id}"
+      fill_in "Add a Pet to this Application", with:"#{puppy.name}"
+      click_on "Search"
+      click_link "Adopt this Pet"
+
+
+      expect(page).to have_button("Submit")
+      expect(page).to have_content("In Progress")
+    end
+
+    it 'When I visit an applications show page, if there is no submit button if no pets' do
+
+      joe = Application.create!(name: 'Joe', street_address: "12 Broadway", city: "Boulder", state: "CO", zip: 80303)
+      shelter = create(:shelter)
+      puppy = create(:pet, shelter: shelter)
+      kitteh = create(:pet, shelter: shelter)
+
+      visit "/applications/#{joe.id}"
+
+      expect(page).to have_content("In Progress")
+      expect(page).to have_no_button("Submit")
+      expect(page).to have_no_content("Pending")
+    
+    end
+
   end
 end
