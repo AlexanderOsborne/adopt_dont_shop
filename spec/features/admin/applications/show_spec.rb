@@ -18,6 +18,8 @@ describe 'As a visitor' do
     expect(current_path).to eq "/admin/applications/#{joe.id}"
     click_button "Approve Application"
     expect(current_path).to eq "/admin/applications/#{joe.id}"
+    expect(page).to have_no_button("Approve Application")
+    expect(page).to have_content("Approved!")
   end
 end
 end

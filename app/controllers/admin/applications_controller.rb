@@ -15,10 +15,13 @@ class Admin::ApplicationsController < ApplicationController
     end
     if params[:description] != nil
       @application.update(status: "Pending")
+      
     end
+    
   end
 
   def update
+
     redirect_to admin_application_show_path
   end
 
