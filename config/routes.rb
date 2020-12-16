@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/", to: "welcome#index"
-
+ 
     #Shelters
   get "/shelters", to: "shelters#index"
   get "/shelters/new", to: "shelters#new", as: :shelters_new
@@ -34,12 +34,9 @@ Rails.application.routes.draw do
 
   #Admin
   namespace :admin do
-    get "/applications/:id", to: "applications#show", as: :applications_show
-    patch "/applications/:id", to: "applications#update", as: :applications_update
+    resources :applications, only: [:show]
   end
 
   #PetApplications
-
-
 end
 

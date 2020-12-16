@@ -14,7 +14,6 @@
   <% end %>
 <% end %>
 
-
 <%= "Address:  #{@application.street_address}" %><br>
 <%= "City: #{@application.city}" %><br>
 <%= "State: #{@application.state}" %><br>
@@ -22,6 +21,7 @@
 <%= "Why I am a good fit:  #{@application.description}" %><br>
 <%  @application.pets.each do |pet| %>
 <%= link_to "#{pet.name}", pets_show_path%><br>
+<%= button_to 'Approve Application', admin_application_path, method: :get %>
 <% end %>
 <%= "Application status  #{@application.status}" %><br>
 

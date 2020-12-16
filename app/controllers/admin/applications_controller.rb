@@ -18,6 +18,10 @@ class Admin::ApplicationsController < ApplicationController
     end
   end
 
+  def update
+    redirect_to admin_application_show_path
+  end
+
   def new
   end
  
