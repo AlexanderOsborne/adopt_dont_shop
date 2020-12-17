@@ -13,4 +13,8 @@ class Pet < ApplicationRecord
       key = "%#{search}%".downcase
       where("LOWER(name) like :search", search: key)
   end
+
+  # def self.find_pet_applications(:id])
+  #   pet.pet_applications
+  # end
 end
