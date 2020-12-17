@@ -28,10 +28,10 @@
 <%= button_to 'Reject Adoption', pet_application_path(application_id: @application.id, pet_id: pet.id, approved: false), method: :patch %>
 <% end %>
 <% if app.approved  == true %>
-<%=  "Approved!"%>
+<%=  "Approved!"%><br>
 <% end %>
 <% if app.approved  == false %>
-<%=  "We are sorry to inform you your adoption has been rejected."%>
+<%=  "We are sorry to inform you your adoption has been rejected."%><br>
 <% end %>
 <% end %>
 
