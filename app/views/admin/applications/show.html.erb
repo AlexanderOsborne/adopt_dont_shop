@@ -21,7 +21,7 @@
 <%= "Why I am a good fit:  #{@application.description}" %><br>
 <%  @application.pets.each do |pet| %>
 <%= link_to "#{pet.name}", pets_show_path%><br>
-<%= button_to 'Approve Application', admin_application_path, method: :get %>
+<%= button_to 'Approve Application', admin_application_path(application_id: @application.id, pet_id: pet.id, approved: false), method: :patch %>
 <% end %>
 <%= "Application status  #{@application.status}" %><br>
 
