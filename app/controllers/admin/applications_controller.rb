@@ -16,17 +16,6 @@ class Admin::ApplicationsController < ApplicationController
     if params[:description] != nil
       @application.update(status: "Pending")
     end
-    if params[:description] != nil
-      @application.update(status: "Pending")
-    end
-    
-  end
-
-  def update
-    pet_app = PetApplication.where(pet_id: params[:pet_id] ,application_id: params[:application_id])
-    pet_app.update(approved: false)
-    require 'pry'; binding.pry
-    redirect_to admin_application_show_path
   end
 
   def new

@@ -38,5 +38,8 @@ Rails.application.routes.draw do
   end
 
   #PetApplications
+  Rails.application.routes.draw do
+    resources :pet_applications, only: [:show, :update]
+  end
 end
 
