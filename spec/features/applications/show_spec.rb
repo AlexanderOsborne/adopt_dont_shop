@@ -44,7 +44,7 @@ require 'rails_helper'
       pet_app = PetApplication.create!(application: joe, pet: puppy, pet:kitteh)
 
       visit "/applications/#{joe.id}"
-      fill_in "Add a Pet to this Application", with:"#{puppy.name}"
+      fill_in "Add a Pet to this Application", with:"#{kitteh.name}"
       click_on "Search"
       click_link "Adopt this Pet"
 
