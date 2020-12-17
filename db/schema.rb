@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_014202) do
     t.bigint "pet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "approved", default: false
+    t.boolean "approved"
     t.index ["application_id"], name: "index_pet_applications_on_application_id"
     t.index ["pet_id"], name: "index_pet_applications_on_pet_id"
   end
